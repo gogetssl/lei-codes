@@ -8,7 +8,7 @@ On 10th June 2021 we released the Alpha version and till end of June we will tes
 
 ## Features
 * LEI Code registration for 170+ countries and regions. Check the [complete list](https://www.getlei.com/registration/) available
-* Company Lookup within [OpencCorporates](https://opencorporates.com/) API
+* Company Lookup within [OpenCorporates](https://opencorporates.com/) API
 * Expiration notifications
 
 ## Coming Features July-August 2021
