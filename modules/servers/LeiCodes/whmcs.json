@@ -1,0 +1,23 @@
+{
+    
+    "schema": "1.0",
+    "type": "whmcs-provisioning",
+    "name": "digicertSSL",
+    "license": "proprietary",
+    "category": "digitcalservices",
+    "description": {
+        "name": "Digicert SSL",
+        "tagline": "Automate the provisioning of ssl certificates in your WHMCS with DigiCert.",
+        "short": "Automate the provisioning of ssl certificates in your WHMCS with DigiCert.",
+        "long": "DigiCert is one of the most powerful company focused on digital security. This module allow to manage DigiCert products via WHMCS. For proper provisioning functionality, Digicert SSL Addon is required."
+    },
+    "logo": {
+        "filename": "digicert.png"
+    },
+    "authors": [
+    {
+        "name": "DigiCert",
+        "homepage": "https://www.digicert.com/"
+    }
+    ]  
+}
