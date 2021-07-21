@@ -31,9 +31,28 @@ class Helper
         foreach($codes as $key => $code)
         {
             $codeC = explode('-', $code['code'])[0];
-            $codes[$key]['fullname'] = $countries[$codeC]['name'];
+            if(empty($countries[$codeC]['name'])){
+                $codes[$key]['fullname'] = $code['name'];
+            } else {
+                if($code['name'] != $countries[$codeC]['name']){
+                    $codes[$key]['fullname'] = $countries[$codeC]['name'].' ('.$code['name'].')';
+                } else {
+                    $codes[$key]['fullname'] = $countries[$codeC]['name'];
+                }
+            }
         }
-        return $codes;
+
+        $output = [];
+        foreach($codes as $key => $data)
+        {
+            if(empty($data['fullname'])){
+                continue;
+            }
+            $output[$data['fullname']] = $data;
+        }
+
+        ksort($output);
+        return $output;
     }
 
 }

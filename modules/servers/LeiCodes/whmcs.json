@@ -2,22 +2,19 @@
     
     "schema": "1.0",
     "type": "whmcs-provisioning",
-    "name": "digicertSSL",
+    "name": "leiCodes",
     "license": "proprietary",
     "category": "digitcalservices",
     "description": {
-        "name": "Digicert SSL",
-        "tagline": "Automate the provisioning of ssl certificates in your WHMCS with DigiCert.",
-        "short": "Automate the provisioning of ssl certificates in your WHMCS with DigiCert.",
-        "long": "DigiCert is one of the most powerful company focused on digital security. This module allow to manage DigiCert products via WHMCS. For proper provisioning functionality, Digicert SSL Addon is required."
-    },
-    "logo": {
-        "filename": "digicert.png"
+        "name": "LEI Codes",
+        "tagline": "Automate the provisioning of LEI codes in your WHMCS with GoGETSSL.",
+        "short": "Automate the provisioning of LEI codes in your WHMCS with GoGETSSL.",
+        "long": "Legal Entity Identifier (LEI) is a unique global identifier for legal entities participating in financial transactions. This module allow to manage LEI codes products via WHMCS. Clients are able to make order transactions and check all important details."
     },
     "authors": [
     {
-        "name": "DigiCert",
-        "homepage": "https://www.digicert.com/"
+        "name": "GoGETSSL",
+        "homepage": "https://www.gogetssl.com//"
     }
     ]  
 }

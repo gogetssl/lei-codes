@@ -227,7 +227,6 @@ class Controller extends AbstractController
                 'error' => $e->getMessage(),
             ];
         } finally {
-        
             return $this->httpResponse();
         }
     }

@@ -103,7 +103,13 @@ function LeiCodes_ClientArea($params)
             return ((new Controller($params))->overview());
         }
     } catch (Exception $e) {
-       
+        isset($_SESSION['adminid']) ? $error = $e->getMessage() : $error = 'API Error - Please contact with administrator';
+        return [
+            'templatefile' => 'overview-error',
+            'vars' => [
+                'error' => $error
+            ]
+        ];
     }
 }
 
