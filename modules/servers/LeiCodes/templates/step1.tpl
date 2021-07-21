@@ -8,7 +8,7 @@
             <select class="form-control" id="legalJurisdiction" name="jurisdiction" data-required="1">
                 <option value="0" data-group="0"></option>
                 {foreach $jurisdictions as $country}
-                    <option value="{$country['code']}" data-fullname="{$country['fullname']}" data-group="{$country['group']}">{$country['name']}</option>
+                    <option value="{$country['code']}" data-fullname="{$country['fullname']}" data-group="{$country['group']}">{$country['fullname']}</option>
                 {/foreach}
             </select>
             </td><td width="60%">{$MGLANG.jurisdictionInfo}</td></tr>
