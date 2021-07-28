@@ -195,7 +195,11 @@
             $('#verifiedCountry').text($(this).find(':selected').data('fullname'));
         })
         $('#legalEntity').selectize({ placeholder : '{$MGLANG.enterChars}'});
-        $('#legalEntity')[0].selectize.on('blur', function(){
+
+        var call;
+
+        $('#legalEntity')[0].selectize.on('type', function(){
+            clearTimeout(call);
             $('#legalEntity')[0].selectize.settings.placeholder = '{$MGLANG.searching_for}' + this.lastQuery;
             $('#legalEntity')[0].selectize.updatePlaceholder();
             if($('#legalEntity').val() == sessionStorage.getItem('entity')){
@@ -204,29 +208,32 @@
                 }
             }
             if(this.lastQuery.length > 1){
-                $.post("clientarea.php?action=productdetails&id={$id}&a=findEntity", 
-                    {
-                        "jurisdiction": $('#legalJurisdiction').val(), 
-                        "name": this.lastQuery
-                    }, 
-                    function(res) {
-                        $('#legalEntity')[0].selectize.clearOptions()
-                        if(res.response.result.results.companies.length < 1)
+                call = setTimeout(function(){
+                    var that = $('#legalEntity')[0].selectize;
+                    $.post("clientarea.php?action=productdetails&id={$id}&a=findEntity", 
                         {
-                            $('#legalEntity')[0].selectize.settings.placeholder = '{$MGLANG.nothingFound}';
-                            $('#legalEntity')[0].selectize.updatePlaceholder();
-                        }
-                        $(res.response.result.results.companies).each(function(){
-                            let data = {
-                                text:this.company.name,
-                                value:this.company.company_number
-                            };
-                        $('#legalEntity')[0].selectize.addOption(data);
-                        $('#legalEntity')[0].selectize.addItem(this.company.name);
-                        })
-                        $('#legalEntity')[0].selectize.refreshOptions();
-                    }, 
-                "json"); 
+                            "jurisdiction": $('#legalJurisdiction').val(), 
+                            "name": that.lastQuery
+                        }, 
+                        function(res) {
+                            $('#legalEntity')[0].selectize.clearOptions()
+                            if(res.response.result.results.companies.length < 1)
+                            {
+                                $('#legalEntity')[0].selectize.settings.placeholder = '{$MGLANG.nothingFound}';
+                                $('#legalEntity')[0].selectize.updatePlaceholder();
+                            }
+                            $(res.response.result.results.companies).each(function(){
+                                let data = {
+                                    text:this.company.name,
+                                    value:this.company.company_number
+                                };
+                                $('#legalEntity')[0].selectize.addOption(data);
+                                $('#legalEntity')[0].selectize.addItem(this.company.name);
+                            })
+                            $('#legalEntity')[0].selectize.refreshOptions();
+                        }, 
+                    "json"); 
+                }, 2000)
             }
         });
 
