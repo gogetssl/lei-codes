@@ -360,6 +360,7 @@ class Controller extends AbstractController
 
     private function createOrder()
     {
+
         try {
             $entityName = $_POST['legalName'];
             $entityState = $_POST['legalState'];
@@ -371,7 +372,8 @@ class Controller extends AbstractController
             if($_POST['legalDropdown'] == 'false')
             {
                 $entityID = $_POST['registrationAuthorityEntityId'];
-                $companyData = CompanyApi::callByNumber($_POST['legalJurisdiction'], $entityID);
+                $companyData = CompanyApi::callByNumber($_POST['legalJurisdiction'], $entityID, $this->params['configoption4']);
+
                 $entityName = $companyData->name;
                 $entityCountry = $companyData->registered_address->country ?: false;
                 $entityCity = $companyData->registered_address->locality ?: false;
@@ -384,7 +386,7 @@ class Controller extends AbstractController
                     throw new Exception($this->lang['noFullDataExists']);
                 }
             }
-            
+
             LeiCodeOrderModel::updateOrCreate(['hosting_id' => $this->params['serviceid']], [
                 'sa_firstname' => $_POST['firstName'],
                 'sa_lastname' => $_POST['lastName'],
