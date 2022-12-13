@@ -455,7 +455,7 @@
                 dataType: 'json',
                 data: {
                     "legalName" : $("#entityname").val(),
-                    "registrationAuthorityEntityId" : $("#entityID").val(),
+                    "registrationAuthorityEntityId" : $("#entityid").val(),
                     "legalID" : $("#entityid").val(),
                     "legalDropdown" : $("#legalEntityBox").is(":hidden"),
                     "legalJurisdiction" : $("#legalJurisdiction").val(),
@@ -478,13 +478,14 @@
                     "hqPostal" : $("#hqPostal").val(),
                 },
                 success: function (data) {
-                    $('#createOrderConfirm').show();
-                    $('#createOrderProcess').hide();
+                    //$('#createOrderConfirm').show();
+                    $('#createOrderProcess,#createOrder').hide();
                     if(data.response.result == 1)
                     {
                         $('#createOrderSuccess').show();
                         window.location.href="clientarea.php?action=productdetails&id={$id}&modop=custom&a=step2"
                     } else {
+                        $('#createOrderConfirm,#createOrder').show();
                         $('#createOrder').attr('disabled', false)
                         $('#createOrderError').text(data.response.error);
                         $('#createOrderError').show();
