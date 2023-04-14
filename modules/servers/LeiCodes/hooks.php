@@ -177,6 +177,11 @@ add_hook('DailyCronJob', 1, function($vars) {
             continue;
         }
         $params = Helper::moduleParams($order->hosting_id);
+        if(!isset($params['customfields']['lei_code_order_id']) || empty($params['customfields']['lei_code_order_id']))
+        {
+            continue;
+        }
+
         $orderDetails = ApiProvider::getInstance()
             ->setID($order->hosting_id)
             ->getApi()
